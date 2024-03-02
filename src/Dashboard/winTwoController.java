@@ -10,9 +10,9 @@ import javafx.stage.Stage;
 public class winTwoController {
     public AnchorPane win2;
 
-    public void backMain(ActionEvent actionEvent) throws Exception {
+    public void backBtn(ActionEvent actionEvent) throws Exception {
         Parent parent = FXMLLoader.load(
-                getClass().getResource("Dashboard.fxml")
+                getClass().getResource("DashboardForm.fxml")
         );
         Stage stage = (Stage)win2.getScene().getWindow();
         stage.setScene(

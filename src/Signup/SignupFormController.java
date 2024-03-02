@@ -19,7 +19,6 @@ public class SignupFormController {
     public TextField txtUsername;
     public PasswordField txtReEnterPassword;
     public PasswordField txtPassword;
-    public Label txtPasswordError;
 
 
     public void onClickSignup(ActionEvent actionEvent) {
@@ -37,6 +36,8 @@ public class SignupFormController {
                 }else{
                     Db.customerData.add( new Customers(txtUsername.getText(),txtPassword.getText()));
                     txtUsername.clear();
+                    Alert confirm = new Alert(Alert.AlertType.INFORMATION,"Successfully Saved!", ButtonType.OK);
+                    confirm.showAndWait();
                 }
             }
 

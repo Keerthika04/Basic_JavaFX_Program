@@ -25,18 +25,24 @@ public class LoginFormController {
             confirm.showAndWait();
         }else {
             for (Customers c : Db.customerData){
-                if(!(c.getName().equals(txtUsername.getText())) || !(c.getPassword().equals(txtPassword.getText()))){
+                if(!(c.getName().equals(txtUsername.getText()))){
                     Alert confirm = new Alert(Alert.AlertType.WARNING,"Ops! That user doesn't exists!", ButtonType.OK);
                     confirm.showAndWait();
+                    txtUsername.clear();
                 }else{
-                    Parent parent = FXMLLoader.load(
-                            getClass().getResource(".fxml")
-                    );
-                    Stage stage = (Stage)loginForm.getScene().getWindow();
-                    stage.setScene(
-                            new Scene(parent)
-                    );
-                    stage.show();
+                    if(c.getName().equals(txtUsername.getText()) && !(c.getPassword().equals(txtPassword.getText()))) {
+                        Alert confirm = new Alert(Alert.AlertType.WARNING,"You have entered wrong password. \n Try again!", ButtonType.OK);
+                        confirm.showAndWait();
+                    }else{
+                        Parent parent = FXMLLoader.load(
+                                getClass().getResource("../Dashboard/DashboardForm.fxml")
+                        );
+                        Stage stage = (Stage) loginForm.getScene().getWindow();
+                        stage.setScene(
+                                new Scene(parent)
+                        );
+                        stage.show();
+                    }
                 }
                 txtPassword.clear();
             }
